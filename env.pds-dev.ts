@@ -1,6 +1,6 @@
 module.exports = {
   MODE: 'development',
-  IS_PDS: 'true',
+  ORGANIZER: 'pds',
   BASE_ROUTE: '/',
   API_URL: 'https://api.debata21.cz/',
   BUILD_DIR: 'registration_dev',

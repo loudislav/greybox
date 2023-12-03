@@ -22,7 +22,7 @@
           {{ $tr("modal.opening") }}
           <ul>
             <li
-              v-for="item in $tr('modal.list' + ($isPDS ? 'PDS' : ''))"
+              v-for="item in $tr('modal.list' + ($organizer !== 'adk' ? 'International' : ''))"
               v-bind:key="item"
             >
               {{ item }}

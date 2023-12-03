@@ -1,6 +1,6 @@
 module.exports = {
   MODE: 'production',
-  IS_PDS: 'false',
+  ORGANIZER: 'adk',
   BASE_ROUTE: '/',
   API_URL: 'https://api-prod.debata21.cz/',
   BUILD_DIR: 'greybox',

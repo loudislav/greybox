@@ -20,13 +20,17 @@
           <span>
             <q-avatar size="35px">
               <!-- Template strings cannot be used in [src] attributes -->
-              <img src="../assets/pride_logo.png" alt="logo" v-if="$isPride && !$isPDS" />
-              <img src="../assets/logo.svg" alt="logo" v-else-if="!$isPDS" />
-              <img src="../assets/logo_pds.svg" alt="logo" v-else />
+              <img src="../assets/pride_logo.png" alt="logo"
+                   v-if="$isPride && $organizer === 'adk'" />
+              <img src="../assets/logo_pds.svg" alt="logo" v-else-if="$organizer === 'pds'" />
+              <img src="../assets/logo.svg" alt="logo" v-else />
             </q-avatar>
 
-            <template v-if="$isPDS">
+            <template v-if="$organizer === 'pds'">
               Prague Debate Spring
+            </template>
+            <template v-else-if="$organizer === 'eurosdc'">
+              EuroSDC
             </template>
             <template v-else>
               greybox 2.0

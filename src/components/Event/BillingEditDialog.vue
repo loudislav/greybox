@@ -74,7 +74,7 @@
               </template>
             </q-input>
 
-            <template v-if="$isPDS">
+            <template v-if="$organizer === 'pds'">
               <mask-input
                   v-model="values.zip"
                   outlined
@@ -176,7 +176,7 @@ export default {
   computed: {
     validateZip() {
       return (
-        !this.$isPDS
+        this.$organizer === 'adk'
         || (this.values.country && this.values.country.value === 'CZ')
       );
     },
@@ -199,8 +199,8 @@ export default {
     },
 
     _initSmartform() {
-      // Disable Smart Form Autocomplete for PDS
-      if (this.$isPDS)
+      // Disable Smart Form Autocomplete for international tournaments
+      if (this.$organizer !== 'adk')
         return;
 
       // Renitialize smartform
@@ -254,7 +254,7 @@ export default {
           : '';
       }
 
-      if (this.$isPDS && data.country) data.country = data.country.value;
+      if (this.$organizer !== 'adk' && data.country) data.country = data.country.value;
 
       this.$api({
         url: `client${isEdit ? `/${this.client.id}` : ''}`,

@@ -7,6 +7,9 @@ import { Person, User } from 'boot/auth';
 export const eventOptionalSelectValues = ['none', 'opt-in', 'opt-out', 'required'] as const;
 export type EventOptionalSelect = typeof eventOptionalSelectValues[number];
 
+export const eventOrganizers = ['adk', 'pds', 'eurosdc'] as const;
+export type EventOrganizer = typeof eventOrganizers[number];
+
 export interface EventRole {
   // eslint-disable-next-line camelcase
   created_at: DateTime;
@@ -62,7 +65,7 @@ export interface Event {
   membership_required: boolean;
   name: TranslatedDatabaseString;
   note: TranslatedDatabaseString | null;
-  pds: boolean;
+  organizer: EventOrganizer;
   place: string;
   // eslint-disable-next-line camelcase
   soft_deadline: DateTime;

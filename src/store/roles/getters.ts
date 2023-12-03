@@ -3,7 +3,7 @@ import { RolesState } from 'src/store/roles/state';
 import { Getter } from 'vuex';
 import { State } from 'src/store';
 import { EventFull, EventPrice } from 'src/types/event';
-import { $isPDS } from 'boot/custom';
+import { $organizer } from 'boot/custom';
 import { translationMatchesInAnyLanguage } from 'boot/i18n';
 
 export const role = (state: RolesState) => (id: number): Role | undefined => state.roles
@@ -28,7 +28,7 @@ export const eventRoles: Getter<RolesState, State> = (
       && rolePrice(1) // ...debater role is present
       ) || (
         rolePrice(r.id) // Role is present in pricing...
-      && (!$isPDS || r.id !== 1) // ...and is not an individual debater on PDS
+      && (!$organizer || r.id !== 1) // ...and is not an individual debater on PDS
       )
     ))
     .map((r: Role) => ({

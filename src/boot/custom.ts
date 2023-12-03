@@ -16,6 +16,7 @@ import { Store } from 'vuex';
 import assert from 'assert';
 import { LocationAsRelativeRaw, MatcherLocationAsPath } from 'vue-router';
 import { translatedRouteLink } from 'src/router/helpers';
+import { EventOrganizer } from 'src/types/event';
 
 export type TranslationValue = TranslateResult | LocaleMessageValue<VueMessageType> | {};
 
@@ -30,7 +31,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $db: (key: any, value?: DBValue, personal?: boolean) => DBValue;
     $flash: (message: string | TranslationValue, type?: string, icon?: string | undefined, timeout?: number) => Function;
-    $isPDS: boolean;
+    $organizer: EventOrganizer;
     $path: (route: string) => string;
     $tr: (key: string | TranslatedString, options?: Record<string, unknown> | null, usePrefix?: boolean, lang?: Locale | null) => TranslationValue;
     $store: Store<State>;
@@ -126,13 +127,15 @@ export const $slugTranslation = (original: TranslatedString): TranslatedString =
   en: $slug(original.en),
 });
 
-export const $isPDS = process.env.IS_PDS === 'true';
+export const $organizer: EventOrganizer = <EventOrganizer> process.env.ORGANIZER;
 
 export const $isPride = (new Date()).getMonth() == 5;
 
 // A bit dirty
-if ($isPDS)
+if ($organizer == 'pds')
   document.title = 'Prague Debate Spring';
+else if ($organizer == 'eurosdc')
+  document.title = 'EuroSDC';
 
 // Convert array of objects into object of objects (with IDs as keys)
 export const $makeIdObject = (array: any) => {
@@ -157,7 +160,7 @@ export default boot(({ app }) => {
   app.use(store);
 
   // $isPDS bool
-  app.config.globalProperties.$isPDS = $isPDS;
+  app.config.globalProperties.$organizer = $organizer;
   app.config.globalProperties.$isPride = $isPride;
 
   // Initialize SmartForms

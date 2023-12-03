@@ -57,7 +57,7 @@ export default {
         sendToken: false,
         data: {
           username: this.email,
-          pds: this.$isPDS
+          pds: this.$organizer === 'pds'
         },
         alerts: false,
         method: 'post',

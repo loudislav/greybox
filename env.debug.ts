@@ -1,6 +1,6 @@
 module.exports = {
   MODE: 'debug',
-  IS_PDS: 'false',
+  ORGANIZER: 'adk',
   BASE_ROUTE: '/',
   API_URL: 'https://api.debata21.cz/',
   BUILD_DIR: 'build-debug',

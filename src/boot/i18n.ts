@@ -3,7 +3,7 @@ import { Quasar } from 'quasar';
 import { createI18n } from 'vue-i18n';
 import { DateTime } from 'src/types/general';
 import {
-  $isPDS, $tr, $path, TranslationValue,
+  $organizer, $tr, $path, TranslationValue,
 } from 'boot/custom';
 import { Router } from 'src/router';
 import { user } from 'src/boot/auth';
@@ -128,7 +128,7 @@ export default boot(({
   void router.isReady()
     .then(() => {
       // PDS mode, homepage -> switch language to EN (without changing route)
-      if ($isPDS && router.currentRoute.value.name === 'home') {
+      if ($organizer && router.currentRoute.value.name === 'home') {
         i18n.global.locale = 'en';
       }
     });

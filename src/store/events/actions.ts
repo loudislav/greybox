@@ -1,7 +1,7 @@
 import { Action } from 'vuex';
 import { bus } from 'boot/eventBus';
 import { AxiosResponse } from 'axios';
-import { $isPDS, $makeIdObject } from 'boot/custom';
+import { $organizer, $makeIdObject } from 'boot/custom';
 import { apiCall } from 'boot/api';
 import { Event, EventFull } from 'src/types/event';
 import { EventsState } from 'src/store/events/state';
@@ -29,7 +29,7 @@ export const load: Action<EventsState, never> = async ({
     .then(({ data }: AxiosResponse<Event[]>) => {
       commit('setEvents', $makeIdObject(
         data
-          .filter((event) => event.pds === $isPDS)
+          .filter((event) => event.organizer === $organizer)
           .map((item) => ({
             ...item,
             fullyLoaded: false,
@@ -88,7 +88,7 @@ export const loadAll: Action<EventsState, never> = async ({
         return;
       }
 
-      commit('setAllEvents', data.filter((event) => event.pds === $isPDS));
+      commit('setAllEvents', data.filter((event) => event.organizer === $organizer));
     })
     .finally(() => {
       if (loading) {

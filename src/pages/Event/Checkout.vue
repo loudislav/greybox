@@ -129,7 +129,7 @@ export default defineComponent({
   },
   computed: {
     selectedCountry() {
-      if (!this.$isPDS || !this.billingClient || !this.billingClient.country) return null;
+      if (this.$organizer === 'adk' || !this.billingClient || !this.billingClient.country) return null;
 
       const db = this.$db('countries-select');
 
