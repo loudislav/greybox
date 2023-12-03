@@ -170,7 +170,7 @@ export default defineComponent({
       },
 
       data: {
-        pds: this.$organizer === 'pds',
+        organizer: this.$organizer,
         name: {
           cs: '',
           en: '',
