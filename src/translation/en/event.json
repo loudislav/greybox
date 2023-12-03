@@ -105,6 +105,7 @@
     }
   },
   "fieldNotes": {
+    "gender": "Participants will be assigned to rooms based on their gender. If you have other preferences, please write it in the comments below, and we will do our best to accommodate your request.",
     "id_number": "Please fill in your ID number if you have one.",
     "accommodation": "Use the note field below for special accommodation requirements.",
     "meals": "Use the note field below for special dietary requirements.",

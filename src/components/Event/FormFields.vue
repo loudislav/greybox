@@ -104,6 +104,16 @@
           <template v-slot:prepend>
             <q-icon name="fas fa-venus-mars" />
           </template>
+          <template v-slot:append>
+              <q-icon name="fas fa-info-circle" />
+              <q-tooltip
+                      anchor="top middle"
+                      self="bottom middle"
+                      :offset="[0, -10]"
+              >
+                  {{ $tr('fieldNotes.gender') }}
+              </q-tooltip>
+          </template>
         </q-select>
 
         <div class="col-12 q-field" style="color: rgba(0,0,0,0.54);">

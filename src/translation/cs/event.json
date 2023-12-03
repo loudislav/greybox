@@ -106,6 +106,7 @@
     }
   },
   "fieldNotes": {
+    "gender": "Pohlaví potřebujeme vědět kvůli rozdělení účastníků do pokojů. Pokud chcete být ubytování jinak (například podle týmů), napište to do poznámky, pokusíme se vám vyhovět.",
     "id_number": "Vyplňte prosím, pokud již občanský průkaz máte.",
     "accommodation": "Pro individuální požadavky k ubytování vyplňte prosím poznámku.",
     "meals": "Pro individuální požadavky ke stravě vyplňte prosím poznámku.",
