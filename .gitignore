@@ -13,6 +13,10 @@ registration.zip
 build-debug.zip
 /greybox
 greybox.zip
+/eurosdc
+eurosdc.zip
+/eurosdc_dev
+eurosdc_dev.zip
 
 # local env files
 .env.local
