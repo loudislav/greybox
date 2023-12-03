@@ -132,10 +132,13 @@ export const $organizer: EventOrganizer = <EventOrganizer> process.env.ORGANIZER
 export const $isPride = (new Date()).getMonth() == 5;
 
 // A bit dirty
-if ($organizer == 'pds')
-  document.title = 'Prague Debate Spring';
-else if ($organizer == 'eurosdc')
-  document.title = 'EuroSDC';
+const getBaseTitle = (): string => {
+  if ($organizer == 'pds')
+    return 'Prague Debate Spring';
+  else if ($organizer == 'eurosdc')
+    return 'EuroSDC';
+  return 'Greybox 2.0';
+}
 
 // Convert array of objects into object of objects (with IDs as keys)
 export const $makeIdObject = (array: any) => {
@@ -150,11 +153,13 @@ export const $makeIdObject = (array: any) => {
 
 export const $setTitle = (title?: string | undefined) => {
   if (title) {
-    document.title = title + ' | Greybox 2.0';
+    document.title = title + ' | ' + getBaseTitle();
   } else {
-    document.title = 'Greybox 2.0';
+    document.title = getBaseTitle();
   }
 }
+
+$setTitle();
 
 export default boot(({ app }) => {
   app.use(store);
