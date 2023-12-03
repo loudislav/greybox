@@ -69,6 +69,13 @@
     "zip": "ZIP code (PSČ)",
     "phone": "Phone number",
     "diet": "Dietary restrictions",
+    "gender": "Gender",
+    "genderValues": {
+      "m": "Male",
+      "f": "Female",
+      "n": "Non-binary",
+      "u": "Undefined"
+    },
     "accommodation": "I don't need accommodation",
     "accommodationOptIn": "I need to arrange accommodation",
     "meals": "I don't need to arrange meals.",

@@ -124,6 +124,9 @@
               <!--
               {{ /*(value).format("D. M. Y")*/ }}
             --></dd>
+            <dd v-else-if="fieldName === 'gender'">
+              {{ $tr('fields.genderValues.' + value)}}
+            </dd>
             <dd v-else-if="value != null">
               {{ value }}
             </dd>

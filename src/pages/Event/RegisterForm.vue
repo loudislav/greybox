@@ -14,6 +14,7 @@
         :possibleDiets="event.dietaryRequirements"
         :role="role.id"
         :requireEmail="event.email_required"
+        :requireGender="event.gender_required"
         @goToRolePick="goToRolePick()"
       />
       <team-form
@@ -28,6 +29,7 @@
         :possibleDiets="event.dietaryRequirements"
         :eventId="eventId"
         :requireEmail="event.email_required"
+        :requireGender="event.gender_required"
       ></team-form>
     </div>
     <!-- Success -->

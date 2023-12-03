@@ -52,6 +52,7 @@
               :possibleDiets="possibleDiets"
               :role="1"
               :requireEmail="requireEmail"
+              :requireGender="requireGender"
           />
         </q-card-section>
       </div>
@@ -79,6 +80,7 @@ export default {
     novices: Boolean,
     possibleDiets: Array,
     requireEmail: Boolean,
+    requireGender: Boolean,
   },
   emits: [
     'toggleVisibility',

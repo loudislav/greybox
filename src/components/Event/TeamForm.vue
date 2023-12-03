@@ -58,6 +58,7 @@
       :mealType="mealType"
       :novices="novices"
       :requireEmail="requireEmail"
+      :requireGender="requireGender"
     />
     <g-d-p-r-checkbox v-model="accept" :error="acceptError" />
     <div class="text-center">
@@ -104,10 +105,10 @@ export default {
     accommodationType: String,
     mealType: String,
     novices: Boolean,
-    novices: Boolean,
     possibleDiets: Array,
     eventId: Number,
     requireEmail: Boolean,
+    requireGender: Boolean,
   },
   emits: [
     'goToRolePick',

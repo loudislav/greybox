@@ -77,6 +77,8 @@ export interface Event {
 export interface EventFull extends Event {
   dietaryRequirements: DietaryRequirement[];
   prices: EventPrice[];
+  // eslint-disable-next-line camelcase
+  gender_required: boolean;
 }
 
 export interface EventRegistration {

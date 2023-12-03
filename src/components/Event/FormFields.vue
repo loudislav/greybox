@@ -85,6 +85,27 @@
       v-if="accommodationType !== 'none'"
     >
       <div class="row q-col-gutter-sm">
+        <q-select
+          outlined
+          v-model="values.gender"
+
+          :options="genderOptions"
+          option-value="label"
+          :label="$tr('fields.gender')"
+          class="q-pt-sm col-12"
+          lazy-rules
+          v-if="requireGender"
+          :rules="[val =>
+            values.accommodation === false ||
+            val ||
+            $tr('general.form.errors.nonEmpty', null, false)
+          ]"
+        >
+          <template v-slot:prepend>
+            <q-icon name="fas fa-venus-mars" />
+          </template>
+        </q-select>
+
         <div class="col-12 q-field" style="color: rgba(0,0,0,0.54);">
           {{ $tr('fields.birthdate') }} *
         </div>
@@ -547,6 +568,7 @@ export default {
     possibleDiets: Array,
     role: Number,
     requireEmail: Boolean,
+    requireGender: Boolean,
   },
 
   data() {
@@ -560,6 +582,7 @@ export default {
         street: null,
         city: null,
         zip: null,
+        gender: null,
         // phone: "+420",
         dietary_requirement: null,
         meals: this.mealType !== 'opt-in' && this.mealType !== 'none',
@@ -606,6 +629,24 @@ export default {
         {
           label: this.$tr('event.fields.ENL'),
           value: 'enl',
+        },
+      ],
+      genderOptions: [
+        {
+          label: this.$tr('event.fields.genderValues.m'),
+          value: 'm',
+        },
+        {
+          label: this.$tr('event.fields.genderValues.f'),
+          value: 'f',
+        },
+        {
+          label: this.$tr('event.fields.genderValues.n'),
+          value: 'n',
+        },
+        {
+          label: this.$tr('event.fields.genderValues.u'),
+          value: 'u',
         },
       ],
     };
@@ -845,6 +886,10 @@ export default {
           this.values[key] = this.speakerOptions.filter(
             (item) => item.value === data[key],
           )[0];
+        } else if (key === 'gender') {
+          this.values[key] = this.genderOptions.filter(
+            (item) => item.value === data[key],
+          )[0];
         } else if (key === 'school_year') {
           this.values['schoolYear'] = this.schoolYears.find(
             (item) => item.value === data[key]
@@ -902,6 +947,12 @@ export default {
         returnObject.zip = this.values.zip
           ? this.values.zip.replace(' ', '')
           : '';
+
+        if (this.requireGender) {
+          returnObject.gender = this.values.gender
+            ? this.values.gender.value
+            : null;
+        }
       } else {
         returnObject.accommodation = false;
       }

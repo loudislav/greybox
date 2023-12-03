@@ -69,6 +69,13 @@
     "zip": "PSČ",
     "phone": "Telefonní číslo",
     "diet": "Stravovací požadavky",
+    "gender": "Pohlaví",
+    "genderValues": {
+      "m": "Muž",
+      "f": "Žena",
+      "n": "Nebinární",
+      "u": "Nedefinováno"
+    },
     "accommodation": "Nechci zařídit ubytování",
     "accommodationOptIn": "Potřebuji zařídit ubytování",
     "meals": "Nepotřebuji zařídit stravu",
