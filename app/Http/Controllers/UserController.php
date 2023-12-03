@@ -246,13 +246,13 @@ class UserController extends Controller
                 $recovery_token = sha1($user->id.time());
                 DB::insert('insert into password_resets (email, token, created_at) values (?, ?, now())', array($username, $recovery_token));
 
-                $pds = $request->has('pds') ? $request->input('pds') : false;
+                $organizer = $request->has('organizer') ? $request->input('organizer') : false;
 
                 $locale = $request->has('locale') ? $request->input('locale') : 'en';
                 app('translator')->setLocale($locale);
 
                 try {
-                    Mail::to($username)->bcc('greybox@debatovani.cz')->send(new ResetPassword($recovery_token, $pds));
+                    Mail::to($username)->bcc('greybox@debatovani.cz')->send(new ResetPassword($recovery_token, $organizer));
                     return response()->json(['message' => 'E-mail sent.'], 200);
                 } catch (\Exception $e) {
                     return response()->json(['message' => $e->getMessage()], 500);

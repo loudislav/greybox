@@ -19,10 +19,22 @@ class ResetPassword extends Mailable
      *
      * @return void
      */
-    public function __construct(string $token, bool $pds)
+    public function __construct(string $token, bool $organizer)
     {
         $this->token = $token;
-        $this->url = ($pds) ? 'https://debatovani.cz/pds/registration/' : 'https://greybox.debatovani.cz/';
+        switch ($organizer) {
+            case 'pds':
+                $this->url = 'https://pds.debatovani.cz/registration/';
+                break;
+
+            case 'eurosdc':
+                $this->url = 'https://eurosdc.eu/';
+                break;
+            
+            default:
+                $this->url = 'https://greybox.debatovani.cz/';
+                break;
+        }
     }
 
     /**
