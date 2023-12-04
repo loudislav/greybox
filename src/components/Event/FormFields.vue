@@ -58,12 +58,11 @@
 
             :options="genderOptions"
             option-value="label"
-            :label="$tr('fields.gender')"
+            :label="$tr('fields.gender') + ' *'"
             class="q-pt-sm q-mb-sm col-12"
             lazy-rules
             v-if="requireGender"
             :rules="[val =>
-          values.accommodation === false ||
           val ||
           $tr('general.form.errors.nonEmpty', null, false)
         ]"
