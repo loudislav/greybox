@@ -654,10 +654,10 @@ export default {
           label: this.$tr('event.fields.genderValues.n'),
           value: 'n',
         },
-        {
+        /*{
           label: this.$tr('event.fields.genderValues.u'),
           value: 'u',
-        },
+        },*/
       ],
     };
   },
