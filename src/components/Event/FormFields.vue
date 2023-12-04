@@ -52,6 +52,37 @@
       </template>
     </q-select>
 
+    <q-select
+            outlined
+            v-model="values.gender"
+
+            :options="genderOptions"
+            option-value="label"
+            :label="$tr('fields.gender')"
+            class="q-pt-sm q-mb-sm col-12"
+            lazy-rules
+            v-if="requireGender"
+            :rules="[val =>
+          values.accommodation === false ||
+          val ||
+          $tr('general.form.errors.nonEmpty', null, false)
+        ]"
+    >
+        <template v-slot:prepend>
+            <q-icon name="fas fa-venus-mars" />
+        </template>
+        <template v-slot:append>
+            <q-icon name="fas fa-info-circle" />
+            <q-tooltip
+                    anchor="top middle"
+                    self="bottom middle"
+                    :offset="[0, -10]"
+            >
+                {{ $tr('fieldNotes.gender') }}
+            </q-tooltip>
+        </template>
+    </q-select>
+
     <div
       class="block"
       v-if="accommodationType !== 'required' && accommodationType !== 'none'"
@@ -85,37 +116,6 @@
       v-if="accommodationType !== 'none'"
     >
       <div class="row q-col-gutter-sm">
-        <q-select
-          outlined
-          v-model="values.gender"
-
-          :options="genderOptions"
-          option-value="label"
-          :label="$tr('fields.gender')"
-          class="q-pt-sm col-12"
-          lazy-rules
-          v-if="requireGender"
-          :rules="[val =>
-            values.accommodation === false ||
-            val ||
-            $tr('general.form.errors.nonEmpty', null, false)
-          ]"
-        >
-          <template v-slot:prepend>
-            <q-icon name="fas fa-venus-mars" />
-          </template>
-          <template v-slot:append>
-              <q-icon name="fas fa-info-circle" />
-              <q-tooltip
-                      anchor="top middle"
-                      self="bottom middle"
-                      :offset="[0, -10]"
-              >
-                  {{ $tr('fieldNotes.gender') }}
-              </q-tooltip>
-          </template>
-        </q-select>
-
         <div class="col-12 q-field" style="color: rgba(0,0,0,0.54);">
           {{ $tr('fields.birthdate') }} *
         </div>
@@ -957,14 +957,14 @@ export default {
         returnObject.zip = this.values.zip
           ? this.values.zip.replace(' ', '')
           : '';
-
-        if (this.requireGender) {
-          returnObject.gender = this.values.gender
-            ? this.values.gender.value
-            : null;
-        }
       } else {
         returnObject.accommodation = false;
+      }
+
+      if (this.requireGender) {
+        returnObject.gender = this.values.gender
+          ? this.values.gender.value
+          : null;
       }
 
       // PDS -> include speaker status
