@@ -49,22 +49,20 @@
           </span>
         </q-toolbar-title>
 
-        <template v-if="$organizer !== 'eurosdc'">
-          <q-avatar
-            size="25px"
-            class="lang-switch"
-            v-for="(lang, locale) in languages"
-            v-bind:key="locale"
-          >
-            <img
-              :src="require(`../assets/${locale}_flag.png`)"
-              :alt="lang.native"
-              :title="lang.native"
-              :class="{ 'flag-dimmed': $i18n.locale !== locale }"
-              @click="switchLocale(locale)"
-            />
-          </q-avatar>
-        </template>
+        <q-avatar
+          size="25px"
+          class="lang-switch"
+          v-for="(lang, locale) in languages"
+          v-bind:key="locale"
+        >
+          <img
+            :src="require(`../assets/${locale}_flag.png`)"
+            :alt="lang.native"
+            :title="lang.native"
+            :class="{ 'flag-dimmed': $i18n.locale !== locale }"
+            @click="switchLocale(locale)"
+          />
+        </q-avatar>
 
         <q-btn-dropdown
           stretch
