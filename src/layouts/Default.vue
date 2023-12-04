@@ -20,10 +20,13 @@
           <span>
             <q-avatar size="35px">
               <!-- Template strings cannot be used in [src] attributes -->
-              <img src="../assets/pride_logo.png" alt="logo"
+              <img src="../assets/pride_logo.png" alt="ADK Pride Logo"
                    v-if="$isPride && $organizer === 'adk'" />
-              <img src="../assets/logo_pds.svg" alt="logo" v-else-if="$organizer === 'pds'" />
-              <img src="../assets/logo.svg" alt="logo" v-else />
+              <img src="../assets/logo_pds.svg" alt="PDS Logo"
+                   v-else-if="$organizer === 'pds'" />
+              <img src="../assets/logo_eurosdc.svg" alt="EuroSDC Logo"
+                   v-else-if="$organizer === 'eurosdc'" />
+              <img src="../assets/logo.svg" alt="ADK Logo" v-else />
             </q-avatar>
 
             <template v-if="$organizer === 'pds'">

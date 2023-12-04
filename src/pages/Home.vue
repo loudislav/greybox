@@ -2,11 +2,13 @@
   <q-page class="flex flex-center content-center">
     <div class="row full-width text-center">
       <!-- Template strings cannot be used in [src] attributes -->
-      <img class="q-mx-auto" alt="Logo ADK" src="../assets/pride_logo_text.png"
+      <img class="q-mx-auto" alt="ADK Pride Logo" src="../assets/pride_logo_text.png"
            v-if="$isPride && $organizer === 'adk'" />
       <img class="q-mx-auto" alt="PDS Logo" src="../assets/logo_pds_text.svg"
            v-else-if="$organizer === 'pds'" />
-      <img class="q-mx-auto" alt="Logo ADK" src="../assets/logo_text.png" v-else />
+      <img class="q-mx-auto" alt="EuroSDC Logo" src="../assets/logo_eurosdc_text.svg"
+           v-else-if="$organizer === 'eurosdc'" />
+      <img class="q-mx-auto" alt="ADK Logo" src="../assets/logo_text.png" v-else />
     </div>
     <div class="row q-mt-xl flex-center home-infocard-wrapper"
          v-if="Object.keys(events).length || !$auth.isLoggedIn()">
