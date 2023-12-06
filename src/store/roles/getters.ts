@@ -5,6 +5,7 @@ import { State } from 'src/store';
 import { EventFull, EventPrice } from 'src/types/event';
 import { $organizer } from 'boot/custom';
 import { translationMatchesInAnyLanguage } from 'boot/i18n';
+import config from 'src/config';
 
 export const role = (state: RolesState) => (id: number): Role | undefined => state.roles
   .find((item) => (item.id === id));
@@ -25,10 +26,10 @@ export const eventRoles: Getter<RolesState, State> = (
       (
         r.id === Infinity // Is team role...
       && !isIndividual // ... registration type is not individual...
-      && rolePrice(1) // ...debater role is present
+      && rolePrice(config.debaterRoleId) // ...debater role is present
       ) || (
         rolePrice(r.id) // Role is present in pricing...
-      && (!$organizer || r.id !== 1) // ...and is not an individual debater on PDS
+      && ($organizer === 'adk' || r.id !== config.debaterRoleId) // ...and is not an individual debater on non-ADK events
       )
     ))
     .map((r: Role) => ({
