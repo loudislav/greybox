@@ -1,7 +1,7 @@
 module.exports = {
   MODE: 'production',
   ORGANIZER: 'pds',
-  BASE_ROUTE: '/pds/registration/',
+  BASE_ROUTE: '/registration/',
   API_URL: 'https://api-prod.debata21.cz/',
   BUILD_DIR: 'registration',
   STAGE: 'pds',
