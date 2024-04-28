@@ -58,6 +58,7 @@ export default {
         data: {
           username: this.email,
           organizer: this.$organizer,
+          locale: this.$i18n.locale,
         },
         alerts: false,
         method: 'post',
