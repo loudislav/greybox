@@ -19,7 +19,7 @@ class ResetPassword extends Mailable
      *
      * @return void
      */
-    public function __construct(string $token, bool $organizer)
+    public function __construct(string $token, string $organizer)
     {
         $this->token = $token;
         switch ($organizer) {
