@@ -101,6 +101,7 @@
       <q-item-label header>{{ $tr('general.user') }}</q-item-label>
       <template v-if="$auth.isLoggedIn() && $auth.user()">
 
+        <!--
         <q-item :href="$auth.user().wrappedUrl" clickable v-if="$auth.user().wrappedUrl">
           <q-item-section avatar>
             <q-icon name="fas fa-gift" />
@@ -111,6 +112,7 @@
             }}
           </q-item-section>
         </q-item>
+        -->
 
         <q-item :to="$path('user.myRegistrations')" clickable>
           <q-item-section avatar>
