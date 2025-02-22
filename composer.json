@@ -11,10 +11,10 @@
         "laravel/lumen-framework": "^9.0",
         "illuminate/contracts": "^9.36.3",
         "doctrine/dbal": "^3.2",
-        "fakturoid/fakturoid-php": "1.0.3",
+        "fakturoid/fakturoid-php": "*",
         "rikudou/czqrpayment": "^5.3",
         "endroid/qr-code": "^4.4.1",
-        "bugsnag/bugsnag-laravel": "^2.21.0",
+        "bugsnag/bugsnag-laravel": "^2.28.1",
         "league/flysystem-aws-s3-v3": "^3.16",
         "illuminate/mail": "^9.52"
     },

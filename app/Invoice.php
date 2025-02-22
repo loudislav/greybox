@@ -22,7 +22,7 @@ class Invoice extends Model implements AuthenticatableContract, AuthorizableCont
      * @var array
      */
     protected $fillable = [
-        'fakturoid_id', 'number', 'client', 'status', 'issued_on', 'taxable_fulfillment_due', 'due_on', 'currency', 'language', 'total', 'paid_amount', 'qr_url'
+        'fakturoid_id', 'number', 'client', 'status', 'issued_on', 'taxable_fulfillment_due', 'due_on', 'currency', 'language', 'total', 'qr_url'
     ];
 
     /**
@@ -73,15 +73,15 @@ class Invoice extends Model implements AuthenticatableContract, AuthorizableCont
         return $this->qr_url;
     }
 
-    public function getPdf(\Fakturoid\Client $fc)
+    public function getPdf()
     {
         $invoiceFileName = $this->qr_url;
-        $invoicePdf = $fc->getInvoicePdf($this->fakturoid_id);
+        $invoicePdf = $this->fcs->getInvoicePdf($this->fakturoid_id);
         $count = 1;
 
         while ($invoicePdf->getStatusCode() !== 200) {
             sleep(2);
-            $invoicePdf = $fc->getInvoicePdf($this->fakturoid_id);
+            $invoicePdf = $this->fcs->getInvoicePdf($this->fakturoid_id);
             $count++;
 
             if ($count >= 5 && $invoicePdf->getStatusCode() !== 200) {
@@ -170,13 +170,12 @@ class Invoice extends Model implements AuthenticatableContract, AuthorizableCont
         $this->currency = $fakturoidInvoice->currency;
         $this->language = $fakturoidInvoice->language;
         $this->total = $fakturoidInvoice->total;
-        $this->paid_amount = $fakturoidInvoice->paid_amount;
     }
 
-    public function setFullUrls(\Fakturoid\Client $fc)
+    public function setFullUrls()
     {
         $this->qr_full_url = "https://api-prod.debata21.cz/qrs/$this->qr_url.png"; // TODO: nastavovat adresu dynamicky
-        if ($this->getPdf($fc)) {
+        if ($this->getPdf()) {
             $this->pdf_url = $this->qr_url;
             $this->pdf_full_url = "https://api-prod.debata21.cz/invoices/$this->pdf_url.pdf";
         }
@@ -312,8 +311,7 @@ class Invoice extends Model implements AuthenticatableContract, AuthorizableCont
             'due_on' => $invoice->due_on,
             'currency' => $invoice->currency,
             'language' => $invoice->language,
-            'total' => $invoice->total,
-            'paid_amount' => $invoice->paid_amount
+            'total' => $invoice->total
         ]);
     }
 }

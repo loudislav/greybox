@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\FakturoidClientService;
 
 abstract class FakturoidController extends Controller
 {
@@ -10,7 +11,7 @@ abstract class FakturoidController extends Controller
      */
     public function getFakturoidClient()
     {
-        return new \Fakturoid\Client(env('FAKTUROID_SLUG'), env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'), env('FAKTUROID_USER_AGENT'));
+        return new FakturoidClientService();
     }
 
     public function fillInvoiceData(array $data, $fakturoidInvoice)
@@ -23,7 +24,6 @@ abstract class FakturoidController extends Controller
         $data['currency'] = $fakturoidInvoice->currency;
         $data['language'] = $fakturoidInvoice->language;
         $data['total'] = $fakturoidInvoice->total;
-        $data['paid_amount'] = $fakturoidInvoice->paid_amount;
 
         return $data;
     }

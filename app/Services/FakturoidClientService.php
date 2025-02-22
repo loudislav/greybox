@@ -3,8 +3,9 @@
 
 namespace App\Services;
 
-use Fakturoid\Client as FakturoidClient;
+use Fakturoid\FakturoidManager as FakturoidClient;
 use Fakturoid\Response;
+use GuzzleHttp\Client as GuzzleClient;
 
 class FakturoidClientService // TODO: split into 2 services: subjects and invoices
 {
@@ -14,16 +15,18 @@ class FakturoidClientService // TODO: split into 2 services: subjects and invoic
     public function __construct()
     {
         $this->fakturoidClient = new FakturoidClient(
-            env('FAKTUROID_SLUG'),
-            env('FAKTUROID_EMAIL'),
-            env('FAKTUROID_API_KEY'),
-            env('FAKTUROID_USER_AGENT')
+            new GuzzleClient(),
+            env('FAKTUROID_CLIENT_ID'),
+            env('FAKTUROID_CLIENT_SECRET'),
+            env('FAKTUROID_USER_AGENT'),
+            env('FAKTUROID_SLUG')
         );
+        $this->fakturoidClient->authClientCredentials();
     }
 
     public function createSubject(Array $subjectData): Response
     {
-        return $this->fakturoidClient->createSubject($subjectData);
+        return $this->fakturoidClient->getSubjectsProvider()->create($subjectData);
     }
 
     public function getAllSubjects(): array
@@ -44,7 +47,7 @@ class FakturoidClientService // TODO: split into 2 services: subjects and invoic
 
     public function createInvoice(Array $invoiceData): Response
     {
-        return $this->fakturoidClient->createInvoice($invoiceData);
+        return $this->fakturoidClient->getInvoicesProvider()->create($invoiceData);
     }
 
     /*
@@ -81,5 +84,10 @@ class FakturoidClientService // TODO: split into 2 services: subjects and invoic
         }
 
         return $lastPage[0];
+    }
+
+    public function getInvoicePdf($fakturoidId)
+    {
+        return $this->fakturoidClient->getInvoicesProvider()->getPdf($fakturoidId);
     }
 }
