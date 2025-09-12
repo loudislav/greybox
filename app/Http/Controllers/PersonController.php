@@ -37,6 +37,7 @@ class PersonController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'email' => 'email',
+            'parent_email' => 'email',
             'school_year' => 'integer|between:1,13'
         ]);
 
@@ -69,6 +70,7 @@ class PersonController extends Controller
     {
         $this->validate($request, [
             'email' => 'email',
+            'parent_email' => 'email',
             'school_year' => 'integer|between:1,13'
         ]);
 
