@@ -86,7 +86,7 @@ class PersonController extends Controller
             if ($request->has('street')) $person->update(['street' => $request->input('street')]);
             if ($request->has('city')) $person->update(['city' => $request->input('city')]);
             if ($request->has('zip')) $person->update(['zip' => $request->input('zip')]);
-            if ($request->has('vegetarian')) $person->update(['vegetarian' => $request->input('vegetarian')]);
+            if ($request->has('parent_email')) $person->update(['parent_email' => $request->input('parent_email')]);
             if ($request->has('dietary_requirement')) $person->update(['dietary_requirement' => $request->input('dietary_requirement')]);
             if ($request->has('speaker_status')) $person->update(['speaker_status' => $request->input('speaker_status')]);
             if ($request->has('school')) $person->update(['school' => $request->input('school   ')]);

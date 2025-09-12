@@ -121,6 +121,7 @@ class EventController extends Controller
                 'novices' => $request->input('novices', 0),
                 'membership_required' => $request->input('membership_required', 1),
                 'email_required' => $request->input('email_required', 0),
+                'parent_email_required' => $request->input('parent_email_required', 0),
                 'gender_required' => $request->input('gender_required', 0),
                 'soft_deadline' => $request->input('soft_deadline'),
                 'hard_deadline' => $request->input('hard_deadline'),
@@ -165,6 +166,7 @@ class EventController extends Controller
             if ($request->has('novices')) $this->updateColumn($event, 'novices', $request->input('novices'));
             if ($request->has('membership_required')) $this->updateColumn($event, 'membership_required', $request->input('membership_required'));
             if ($request->has('email_required')) $this->updateColumn($event, 'email_required', $request->input('email_required'));
+            if ($request->has('parent_email_required')) $this->updateColumn($event, 'parent_email_required', $request->input('parent_email_required'));
             if ($request->has('gender_required')) $this->updateColumn($event, 'gender_required', $request->input('gender_required'));
             if ($request->has('soft_deadline')) $this->updateColumn($event, 'soft_deadline', $request->input('soft_deadline'));
             if ($request->has('hard_deadline')) $this->updateColumn($event, 'hard_deadline', $request->input('hard_deadline'));

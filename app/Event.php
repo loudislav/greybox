@@ -30,6 +30,7 @@ class Event extends Model implements AuthenticatableContract, AuthorizableContra
         'novices',
         'membership_required',
         'email_required',
+        'parent_email_required',
         'gender_required',
         'soft_deadline',
         'hard_deadline',
