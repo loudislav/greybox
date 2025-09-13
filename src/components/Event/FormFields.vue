@@ -521,6 +521,21 @@
         </template>
 -->
     <q-input
+      v-model="values.parent_email"
+      v-if="requireParentEmail"
+      class="q-mt-sm"
+      outlined
+      autogrow
+      :label="$tr('fields.parentEmail') + ' *'"
+      lazy-rules
+      :rules="[$validators.email]"
+    >
+      <template v-slot:prepend>
+        <q-icon name="fas fa-user-friends" />
+      </template>
+    </q-input>
+
+    <q-input
       v-model="values.note"
       class="q-mt-sm"
       outlined
@@ -577,6 +592,7 @@ export default {
     possibleDiets: Array,
     role: Number,
     requireEmail: Boolean,
+    requireParentEmail: Boolean,
     requireGender: Boolean,
   },
 
@@ -602,6 +618,7 @@ export default {
         // parentName: null,
         // parentPhone: "+420",
         // parentEmail: null,
+        parent_email: null,
         note: null,
         email: null,
         accept: false,
@@ -934,6 +951,10 @@ export default {
 
       if (this.values.email || this.requireEmail) {
         returnObject.email = this.values.email;
+      }
+
+      if (this.requireParentEmail && this.values.parent_email && this.values.parent_email.trim() !== '') {
+        returnObject.parent_email = this.values.parent_email;
       }
 
       if (this.values.schoolYear && this.requireSchoolYear) {

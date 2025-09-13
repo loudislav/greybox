@@ -273,7 +273,9 @@ export default defineComponent({
           this.loading = false;
 
           if (data.response && data.response.data) {
-            const { message } = data.response.data;
+            const { message: originalMessage } = data.response.data;
+
+            const message = originalMessage ?? (data.response.data.parent_email ? 'parentEmail' : null);
 
             if (message) {
               return this.$flash(

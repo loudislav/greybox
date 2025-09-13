@@ -30,6 +30,8 @@ export interface Person {
   // eslint-disable-next-line camelcase
   school_year: number;
   // eslint-disable-next-line camelcase
+  parent_email?: string;
+  // eslint-disable-next-line camelcase
   speaker_status: string;
   note: string;
   // eslint-disable-next-line camelcase

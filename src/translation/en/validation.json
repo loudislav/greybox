@@ -25,5 +25,6 @@
     "email": "The e-mail you have entered was not found",
     "tokenNotFound": "The reset link is not valid, please send a new request",
     "userNotFound": "The e-mail you have entered was not found",
-    "teamNameTooLong": "The team name is too long"
+    "teamNameTooLong": "The team name is too long",
+    "parentEmail": "{person} - the parent e-mail is not valid"
 }

@@ -25,5 +25,6 @@
     "email": "Zadaný e-mail nebyl nalezen",
     "tokenNotFound": "Odkaz pro obnovení není platný, odešlete novou žádost",
     "userNotFound": "Zadaný e-mail nebyl nalezen",
-    "teamNameTooLong": "Název týmu je příliš dlouhý"
+    "teamNameTooLong": "Název týmu je příliš dlouhý",
+    "parentEmail": "{person} - e-mail rodiče nemá správný formát"
 }

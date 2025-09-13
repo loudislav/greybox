@@ -15,6 +15,7 @@
         :role="role.id"
         :requireEmail="event.email_required"
         :requireGender="event.gender_required"
+        :requireParentEmail="event.parent_email_required"
         @goToRolePick="goToRolePick()"
       />
       <team-form
@@ -30,6 +31,7 @@
         :eventId="eventId"
         :requireEmail="event.email_required"
         :requireGender="event.gender_required"
+        :requireParentEmail="event.parent_email_required"
       ></team-form>
     </div>
     <!-- Success -->

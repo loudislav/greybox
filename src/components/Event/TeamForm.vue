@@ -59,6 +59,7 @@
       :novices="novices"
       :requireEmail="requireEmail"
       :requireGender="requireGender"
+      :requireParentEmail="requireParentEmail"
     />
     <g-d-p-r-checkbox v-model="accept" :error="acceptError" />
     <div class="text-center">
@@ -109,6 +110,7 @@ export default {
     eventId: Number,
     requireEmail: Boolean,
     requireGender: Boolean,
+    requireParentEmail: Boolean,
   },
   emits: [
     'goToRolePick',

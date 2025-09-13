@@ -84,7 +84,7 @@
     "legalGuardian": "Legal guardian",
     "parentName": "Full name",
     "parentPhone":  "Phone number",
-    "parentEmail": "E-mail address",
+    "/*parentEmail": "E-mail address*/",
     "note": "Note",
     "judgingExp": "Judging experience",
     "school": "School",
@@ -93,6 +93,7 @@
     "ESL": "ESL (English as a Second Language)",
     "ENL": "ENL (English as a Native Language)",
     "schoolYear": "School year",
+    "parentEmail": "Parent email",
     "schoolYears": {
       "6": "6th grade",
       "7": "7th grade",

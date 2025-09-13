@@ -84,7 +84,7 @@
     "legalGuardian": "Zákonný zástupce",
     "parentName": "Celé jméno",
     "parentPhone": "Telefonní číslo",
-    "parentEmail": "E-mailová adresa",
+    "/*parentEmail": "E-mailová adresa*/",
     "note": "Poznámka",
     "judgingExp": "Zkušenost s rozhodováním",
     "school": "Škola",
@@ -93,6 +93,7 @@
     "ESL": "ESF (English as a Second Language)",
     "ENL": "ENL (English as a Native Language)",
     "schoolYear": "Školní rok",
+    "parentEmail": "E-mail rodičů",
     "school_year": "Školní rok",
     "schoolYears": {
       "6": "6. třída / prima",

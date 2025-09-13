@@ -53,6 +53,7 @@
               :role="1"
               :requireEmail="requireEmail"
               :requireGender="requireGender"
+              :requireParentEmail="requireParentEmail"
           />
         </q-card-section>
       </div>
@@ -81,6 +82,7 @@ export default {
     possibleDiets: Array,
     requireEmail: Boolean,
     requireGender: Boolean,
+    requireParentEmail: Boolean,
   },
   emits: [
     'toggleVisibility',
