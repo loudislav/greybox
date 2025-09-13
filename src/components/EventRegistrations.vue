@@ -318,6 +318,12 @@ export default defineComponent({
       name: 'note', label: this.$tr('event.registrationsOverview.labels.note'), field: 'note', format: emptyToHyphen, sortable: true, sort: (a: string, b: string) => customCompareStrings(a, b), align: 'left',
     }];
 
+    if (this.event.parent_email_required) {
+      columns.push({
+        name: 'parent_email', label: this.$tr('event.registrationsOverview.labels.parentEmail'), field: (row: EventRegistration) => row.person.parent_email, format: emptyToHyphen, sortable: true, sort: (a: string, b: string) => customCompareStrings(a, b), align: 'left',
+      });
+    }
+
     if (this.event.accommodation !== 'none') {
       columns.push({
         name: 'accommodation', label: this.$tr('event.registrationsOverview.labels.accommodation'), field: 'accommodation', format: outputBoolean, sortable: false, align: 'center',

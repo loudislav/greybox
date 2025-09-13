@@ -229,7 +229,8 @@
       "club": "Club",
       "teamName": "Name",
       "members": "Members",
-      "registrant": "Registrant"
+      "registrant": "Registrant",
+      "parentEmail": "Parent email"
     }
   }
 }

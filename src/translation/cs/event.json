@@ -230,7 +230,8 @@
       "club": "Klub",
       "teamName": "Název",
       "members": "Členstvo",
-      "registrant": "Přihlašující"
+      "registrant": "Přihlašující",
+      "parentEmail": "E-mail rodičů"
     }
   }
 }

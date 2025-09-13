@@ -79,6 +79,8 @@ export interface EventFull extends Event {
   prices: EventPrice[];
   // eslint-disable-next-line camelcase
   gender_required: boolean;
+  // eslint-disable-next-line camelcase
+  parent_email_required?: boolean;
 }
 
 export interface EventRegistration {
