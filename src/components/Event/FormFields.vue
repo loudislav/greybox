@@ -522,7 +522,7 @@
 -->
     <q-input
       v-model="values.parent_email"
-      v-if="requireParentEmail"
+      v-if="roleRequiresParentEmail"
       class="q-mt-sm"
       outlined
       autogrow
@@ -643,6 +643,7 @@ export default {
       requireSchoolYear: this.$organizer === 'adk' && this.role === config.debaterRoleId, // only for non-PDS debaters
       requireSpeakerStatus: this.$organizer === 'pds' && this.role === config.debaterRoleId, // only for PDS debaters
       requireJudingExperience: this.$organizer === 'pds' && this.role === config.judgeRoleId, // show "Judging experience" instead of note (only for PDS judges)
+      roleRequiresParentEmail: this.requireParentEmail && this.role === config.debaterRoleId,
       speakerOptions: [
         {
           label: this.$tr('event.fields.EFL'),
@@ -953,7 +954,7 @@ export default {
         returnObject.email = this.values.email;
       }
 
-      if (this.requireParentEmail && this.values.parent_email && this.values.parent_email.trim() !== '') {
+      if (this.roleRequiresParentEmail && this.values.parent_email && this.values.parent_email.trim() !== '') {
         returnObject.parent_email = this.values.parent_email;
       }
 
