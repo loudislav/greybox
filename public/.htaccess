@@ -14,12 +14,12 @@
   RewriteRule . /greybox/registrace/index.html [L]
 
   # PDS
-  RewriteBase /pds/registration
+  RewriteBase /registration
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} ^/pds/registration
-  RewriteRule . /pds/registration/index.html [L]
+  RewriteCond %{REQUEST_URI} ^/registration
+  RewriteRule . /registration/index.html [L]
 
   # Development
   RewriteBase /
