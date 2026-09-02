@@ -382,7 +382,7 @@ switch ($kdo) {
 			cph_table_row(array(
 				cphs_link("./?page=clovek&clovek_id=" . $clovek["clovek_ID"],join_name($clovek["jmeno"],$clovek["nick"],$clovek["prijmeni"])),
 				cphs_link("./?page=klub&klub_id=" . $clovek["klub_ID"],$clovek["klub"]),
-				$clovek["uroven"],
+				$clovek["uroven"] == 0 ? "" : $clovek["uroven"],
 				$clovek["format"],
 				$clovek["jazyk"],
 				$clovek["misto"],
