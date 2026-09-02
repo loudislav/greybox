@@ -278,6 +278,7 @@ CREATE TABLE login (
 CREATE TABLE rozhodci (
   clovek_ID int(10) unsigned NOT NULL default '0',
   rocnik tinyint(3) unsigned NOT NULL default '0',
+  uroven tinyint(1) unsigned NOT NULL default '0',
   misto varchar(255) default NULL,
   jazyk set('cz','en','de','fr') character set utf8 default NULL,
   format set('DL','DP','SD','SD2-2') character set utf8 default NULL,

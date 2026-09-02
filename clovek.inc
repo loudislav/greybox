@@ -213,6 +213,8 @@ if ($GLOBALS["cps_lidi"] >= 2) {
 	$accr->form[] = new cpf_db_hidden("rocnik_old","rocnik");
 	$accr->form[] = new cpf_text($lang["season"] . ": ");
 	$accr->form[] = new cpf_db_listbox_array("rocnik", $GLOBALS["season_domain"]);
+	$accr->form[] = new cpf_text(" " . $lang["level"] . ": ");
+	$accr->form[] = new cpf_db_listbox_array("uroven", array(0=>0, 1=>1, 2=>2, 3=>3));
 	$accr->form[] = new cpf_text(" " . $lang["language"] . ": ");
 	$accr->form[] = new cpf_db_textbox("jazyk");
 	$accr->form[] = new cpf_text(" " . $lang["separate by commas: en,cz"],array("class"=>"desc"));
@@ -228,20 +230,21 @@ if ($GLOBALS["cps_lidi"] >= 2) {
 	
 	$accr->form["b1"] = new cpf_button("add",$lang["add"]);
 	unset($accr->form["b2"]);
-	$accr->load_this(array("rocnik"=>$GLOBALS["current_season"]));
+	$accr->load_this(array("rocnik"=>$GLOBALS["current_season"], "uroven"=>0));
 	$accr->render_hidden($lang["new accreditation"]);
 } else {
 	if (cpdb_fetch_all("
-		select rocnik, format, misto, jazyk from rozhodci where clovek_ID = :clovek_id order by rocnik",
+		select rocnik, uroven, format, misto, jazyk from rozhodci where clovek_ID = :clovek_id order by rocnik",
 		array(":clovek_id"=>$clovek_id),
 		$accrs)) {
 		
 		de_html($accrs);
 		cph_h2($lang["accreditations"]);
-		cph_table_head(array($lang["season"],$lang["format"],$lang["language"],$lang["place"]));
+		cph_table_head(array($lang["season"],$lang["level"],$lang["format"],$lang["language"],$lang["place"]));
 		foreach ($accrs as $accr) {
 			cph_table_row(array(
 				season_to_str($accr["rocnik"]),
+				$accr["uroven"],
 				$accr["format"],
 				$accr["jazyk"],
 				$accr["misto"]

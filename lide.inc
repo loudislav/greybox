@@ -361,6 +361,7 @@ switch ($kdo) {
 				rozhodci.misto,
 				rozhodci.jazyk,
 				rozhodci.format,
+				rozhodci.uroven,
 				klub.kratky_nazev as klub
 			from 
 				rozhodci
@@ -374,13 +375,14 @@ switch ($kdo) {
 		
 		de_html($lide);
 		cph_table_head(
-			array($lang["name"], $lang["club"], $lang["format"], $lang["languages"], $lang["place"], $lang["ipoints"])
+			array($lang["name"], $lang["club"], $lang["level"], $lang["format"], $lang["languages"], $lang["place"], $lang["ipoints"])
 		);
 		
 		foreach ($lide as $clovek) {
 			cph_table_row(array(
 				cphs_link("./?page=clovek&clovek_id=" . $clovek["clovek_ID"],join_name($clovek["jmeno"],$clovek["nick"],$clovek["prijmeni"])),
 				cphs_link("./?page=klub&klub_id=" . $clovek["klub_ID"],$clovek["klub"]),
+				$clovek["uroven"],
 				$clovek["format"],
 				$clovek["jazyk"],
 				$clovek["misto"],
